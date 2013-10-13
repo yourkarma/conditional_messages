@@ -13,6 +13,10 @@ module ConditionalMessages
       @category = category
     end
 
+    def name
+      category.name
+    end
+
     def for(context)
       context_holder = ContextHolder.new(context)
       applied_message = FindMessage.for(context_holder, category)

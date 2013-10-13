@@ -20,5 +20,22 @@ module ConditionalMessages
 
     end
 
+    it "is enumerable" do
+      collection = Collection.new
+
+      collection.define do
+        category :the_name do
+        end
+        category :other_name do
+        end
+      end
+
+      found = []
+
+      found = collection.map(&:name)
+
+      expect(found).to eq ["the_name", "other_name"]
+    end
+
   end
 end

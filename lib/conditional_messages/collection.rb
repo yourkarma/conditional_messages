@@ -3,6 +3,7 @@ require "conditional_messages/read_category"
 
 module ConditionalMessages
   class Collection
+    include Enumerable
 
     def define(&definition)
       instance_eval(&definition)
@@ -21,6 +22,12 @@ module ConditionalMessages
 
     def [](key)
       ReadCategory.new(categories.fetch(key.to_s))
+    end
+
+    def each
+      categories.each do |name, category|
+        yield self[name]
+      end
     end
 
   end
