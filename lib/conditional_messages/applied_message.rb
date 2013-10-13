@@ -16,7 +16,7 @@ module ConditionalMessages
     end
 
     def score
-      applied_rules.map(&:score).inject(:+)
+      applied_rules.map(&:score).inject(:+).to_i
     end
 
     def source_text
